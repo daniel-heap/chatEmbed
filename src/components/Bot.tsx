@@ -312,7 +312,6 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
 
   // Handle form submission
   const handleSubmit = async (value: string) => {
-
     // Add current page url at the beginning of the prompt.
     const currentUrl = window.location.href;
     value = currentUrl + ' || ' + value;

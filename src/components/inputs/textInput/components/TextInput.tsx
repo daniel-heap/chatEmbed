@@ -34,7 +34,11 @@ export const TextInput = (props: Props) => {
   const checkIfInputIsValid = () => inputValue() !== '' && inputRef?.reportValidity();
 
   const submit = () => {
-    if (checkIfInputIsValid()) props.onSubmit(inputValue());
+    if (checkIfInputIsValid()) {
+      const currentUrl = window.location.href;
+      const value = currentUrl + ' || ' + inputValue();
+      props.onSubmit(value);
+    }
     setInputValue('');
   };
 
