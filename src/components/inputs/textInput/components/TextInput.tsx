@@ -35,9 +35,9 @@ export const TextInput = (props: Props) => {
 
   const submit = () => {
     if (checkIfInputIsValid()) {
-      const currentUrl = window.location.href;
-      const value = currentUrl + ' || ' + inputValue();
-      props.onSubmit(value);
+      //const currentUrl = window.location.href;
+      //const value = currentUrl + ' || ' + inputValue();
+      props.onSubmit(inputValue());
     }
     setInputValue('');
   };
