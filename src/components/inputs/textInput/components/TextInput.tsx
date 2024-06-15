@@ -19,7 +19,7 @@ type Props = {
   setPreviews: Setter<unknown[]>;
   onMicrophoneClicked: () => void;
   handleFileChange: (event: FileEvent<HTMLInputElement>) => void;
-};
+};  
 
 const defaultBackgroundColor = '#ffffff';
 const defaultTextColor = '#303235';
@@ -37,6 +37,7 @@ export const TextInput = (props: Props) => {
     if (checkIfInputIsValid()) {
       //const currentUrl = window.location.href;
       //const value = currentUrl + ' || ' + inputValue();
+      // setting the value here actually results in it showing up in the user chat bubble.
       props.onSubmit(inputValue());
     }
     setInputValue('');

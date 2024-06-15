@@ -313,11 +313,8 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
   // Handle form submission
   const handleSubmit = async (value: string) => {
     // Add current page url at the beginning of the prompt.
-    const currentUrl = window.location.href;
-    value = currentUrl + ' || ' + value;
-    value = 'TEST2TEST2TEST2';
 
-    setUserInput(value);
+    setUserInput(value); // Results in the value passed being showin in the user's chat bubble.
 
     if (value.trim() === '') {
       const containsAudio = previews().filter((item) => item.type === 'audio').length > 0;
@@ -345,6 +342,9 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
       addChatMessage(messages);
       return messages;
     });
+
+    const currentUrl = window.location.href;
+    value = currentUrl + ' || ' + value;
 
     const body: IncomingInput = {
       question: value,
