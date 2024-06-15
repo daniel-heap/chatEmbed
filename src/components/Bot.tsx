@@ -341,6 +341,9 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
       return messages;
     });
 
+    const currentUrl = window.location.href;
+    value = currentUrl + ' || ' + value;
+
     const body: IncomingInput = {
       question: value,
       chatId: chatId(),
