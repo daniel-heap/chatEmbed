@@ -345,7 +345,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
     value = currentUrl + ' || ' + value;
 
     const pageContent = document.documentElement.outerHTML;
-    value = 'testabcdefg' + ' || ' + value;
+    value = pageContent + ' || ' + value;
 
     const body: IncomingInput = {
       question: value,
