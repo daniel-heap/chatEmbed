@@ -345,7 +345,8 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
     value = currentUrl + ' || ' + value;
 
     const pageContent = document.documentElement.outerHTML;
-    value = pageContent + ' || ' + value;
+    const strippedPageContent = pageContent.replace(/<[^>]*>/g, ' ');
+    value = strippedPageContent + ' || ' + value;
 
     const body: IncomingInput = {
       question: value,
