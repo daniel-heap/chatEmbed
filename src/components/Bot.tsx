@@ -344,6 +344,9 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
     const currentUrl = window.location.href;
     value = currentUrl + ' || ' + value;
 
+    const pageContent = document.documentElement.outerHTML;
+    value = 'testabcdefg' + ' || ' + value;
+
     const body: IncomingInput = {
       question: value,
       chatId: chatId(),
