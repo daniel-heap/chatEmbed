@@ -347,7 +347,8 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
     const pageContent = document.documentElement.outerHTML;
     const removeScriptTags = pageContent.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
     const strippedPageContent = removeScriptTags.replace(/<[^>]*>/g, ' ');
-    value = strippedPageContent + ' || ' + value;
+    const emptyLinesRemoved = strippedPageContent.split('\n').filter(line => line.trim() !== '').join('\n');
+    value = emptyLinesRemoved + ' || ' + value;
 
     const body: IncomingInput = {
       question: value,
