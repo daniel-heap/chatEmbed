@@ -345,10 +345,26 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
     value = currentUrl + ' || ' + value;
 
     const pageContent = document.documentElement.outerHTML;
-    const removeScriptTags = pageContent.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-    const strippedPageContent = removeScriptTags.replace(/<[^>]*>/g, ' ');
-    const emptyLinesRemoved = strippedPageContent.split('\n').filter(line => line.trim() !== '').join('\n');
-    value = emptyLinesRemoved + ' || ' + value;
+    
+    // Create a temporary element
+    const temp = document.createElement('div');
+      
+    // Set the HTML content
+    temp.innerHTML = pageContent;
+      
+    // Remove scripts and styles
+    const scripts = temp.getElementsByTagName('script');
+    const styles = temp.getElementsByTagName('style');
+    while (scripts[0]) scripts[0].parentNode.removeChild(scripts[0]);
+    while (styles[0]) styles[0].parentNode.removeChild(styles[0]);
+      
+    // Get the text content
+    let text = temp.textContent || temp.innerText;
+      
+    // Clean up the text
+    text = text.replace(/\s+/g, ' ').trim(); // Remove extra whitespace
+
+    value = text + ' || ' + value;
 
     const body: IncomingInput = {
       question: value,
